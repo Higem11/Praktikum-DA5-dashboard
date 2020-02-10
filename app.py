@@ -17,6 +17,8 @@ from dash.dependencies import Input, Output
 
 import dash_core_components as dcc
 
+import dash_bootstrap_components as dbc
+
 import dash_html_components as html
 
 import plotly.graph_objs as go
@@ -31,10 +33,11 @@ def get_df():
     r = requests.get('https://docs.google.com/spreadsheets/d/1x85oldnFJr2SqHQhvhTVYj08T62FbIiwL9ub2QB9TZY/export?format=csv')
     data = r.content
     df = pd.read_csv(BytesIO(data), index_col=0).reset_index()
-    df.columns = ['timestamp','gender','age','city','most_difficult_theme','quality_rate','job_rate','review']
+    df.columns = ['timestamp','gender','age','city','most_difficult_theme','quality_rate','job_rate','review', 'cohort_number']
     df['timestamp']= pd.to_datetime(df['timestamp'], format='%d.%m.%Y %H:%M:%S')
     df['day'] = df['timestamp'].astype('datetime64[D]')
-    df['review'].fillna(df.review.mean(),inplace=True)
+    df['review'] = df['review'].fillna(df.review.mean())
+    df['cohort_number'] = df['cohort_number'].fillna(5)
     df = df.dropna().reset_index(drop=True)
     df['pr_rate']= df.quality_rate*df.job_rate*df.review
 
@@ -479,16 +482,16 @@ def update_graph_live(n):
 
     most_dif['labels'] = most_dif['most_difficult_theme'].apply(add_break)
     
-    x = most_dif['most_difficult_theme']
+    x = most_dif['labels']
     y = most_dif['count']
-    max_y = y.max() # max value to give it red color
-    bar_colors = ['crimson' if rate == max_y else 'lightslategray' for rate in y]
+#     max_y = y.max() # max value to give it red color
+#     bar_colors = ['crimson' if rate == max_y else 'lightslategray' for rate in y]
     pulls = [0.1 if rate == max_y else 0 for rate in y]
 
     # draw it
     fig = go.Figure()
-    fig.add_trace(go.Pie(labels=most_dif['most_difficult_theme'], values=most_dif['count'], hole=0.35, pull=pulls,
-		  	 textinfo='percent+label', textposition='outside'))
+    fig.add_trace(go.Pie(labels=x, values=y, hole=0.35, pull=pulls,
+		  	 textinfo='percent+label'))
     fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
