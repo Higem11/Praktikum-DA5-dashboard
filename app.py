@@ -493,7 +493,7 @@ def update_graph_live(n):
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
