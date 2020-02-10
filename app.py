@@ -590,10 +590,10 @@ def update_progress(n):
 # check progress of some background process, in this example we'll just
 # use n_intervals constrained to be in 0-100
     current_stage = int(9/14 * 100)
-    if n * 5 > current_stage:
+    if n * 8 > current_stage:
         progress = current_stage
     else:
-        progress = n * 5
+        progress = n * 8
 # only add text after 5% progress to ensure text isn't squashed too much
     return progress, f"{progress} %" if progress >= 5 else ""
 
