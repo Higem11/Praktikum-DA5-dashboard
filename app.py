@@ -479,7 +479,7 @@ def update_graph_live(n):
 
     most_dif['labels'] = most_dif['most_difficult_theme'].apply(add_break)
     
-    x = most_dif['most_difficult_theme']
+    x = most_dif['labels']
     y = most_dif['count']
     max_y = y.max() # max value to give it red color
     bar_colors = ['crimson' if rate == max_y else 'lightslategray' for rate in y]
@@ -487,7 +487,7 @@ def update_graph_live(n):
 
     # draw it
     fig = go.Figure()
-    fig.add_trace(go.Pie(labels=most_dif['most_difficult_theme'], values=most_dif['count'], hole=0.35, pull=pulls,
+    fig.add_trace(go.Pie(labels=x, values=y, hole=0.35, pull=pulls,
 		  	 textinfo='percent+label'))
     fig.update_traces(textfont_size=16, marker=dict(line=dict(color='#000000', width=1)))
 
