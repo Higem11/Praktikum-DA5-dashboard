@@ -133,7 +133,13 @@ app.layout = html.Div(
             className="row flex-display",
             style={"margin-bottom": "25px"},
         ),
-        #
+        # progress bar
+	html.Div([
+		  html.H4('Progress bar'), html.Div([
+		  dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
+		  dbc.Progress(id="progress", color="success", style={"height": "30px"}, className='progress_bar')])
+		]),
+	# metrics
         html.Div(
             [
                 html.Div(
@@ -480,7 +486,7 @@ def update_graph_live(n):
 
     most_dif['labels'] = most_dif['most_difficult_theme'].apply(add_break)
     
-    x = most_dif['most_difficult_theme']
+    x = most_dif['labels']
     y = most_dif['count']
     max_y = y.max() # max value to give it red color
     bar_colors = ['crimson' if rate == max_y else 'lightslategray' for rate in y]
@@ -488,13 +494,13 @@ def update_graph_live(n):
 
     # draw it
     fig = go.Figure()
-    fig.add_trace(go.Pie(labels=most_dif['most_difficult_theme'], values=most_dif['count'], hole=0.35, pull=pulls,
-		  	 textinfo='percent+label', textposition='outside'))
+    fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
+		  	 textinfo='percent+label'))
     fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -571,6 +577,25 @@ def update_graph_live(n):
     return fig
 
 #----------------------/map_plot----------------------------------------
+
+#----------------------progress_bar----------------------------------------
+
+@app.callback(
+[Output("progress", "value"), Output("progress", "children")],
+[Input("progress-interval", "n_intervals")],
+)
+def update_progress(n):
+# check progress of some background process, in this example we'll just
+# use n_intervals constrained to be in 0-100
+    current_stage = int(9/14 * 100)
+    if n * 10 > current_stage:
+        progress = current_stage
+    else:
+        progress = n * 10
+# only add text after 5% progress to ensure text isn't squashed too much
+    return progress, f"{progress} %" if progress >= 5 else ""
+
+#----------------------/progress_bar----------------------------------------
 
 #--------------------------------------------------------/layout-------------------------------------------------------   
 
