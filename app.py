@@ -17,8 +17,6 @@ from dash.dependencies import Input, Output
 
 import dash_core_components as dcc
 
-import dash_bootstrap_components as dbc
-
 import dash_html_components as html
 
 import plotly.graph_objs as go
@@ -566,7 +564,7 @@ def update_graph_live(n):
                                     pitch=0, zoom=2.3),
                         plot_bgcolor = colors['background'],
                         paper_bgcolor = colors['background'],
-			margin=dict(l=0, r=0, t=0, b=0), height=370)
+			margin=dict(l=0, r=0, t=0, b=0))
 
     fig = go.Figure(data=data, layout=layout)
 
