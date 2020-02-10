@@ -1,0 +1,231 @@
+.js-plotly-plot .plotly .modebar {
+  padding-top: 5%;
+  margin-right: 3.5%;
+}
+
+body {
+  background-color: #27292d;
+  margin: 5%;
+}
+
+.two.columns {
+  width: 16.25%;
+}
+
+.column,
+.columns {
+  margin-left: 0.5%;
+}
+
+.pretty_container {
+  border-radius: 5px;
+  background-color: #191a1a;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px #6b648f;
+}
+
+.bare_container {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.dcc_control {
+  margin: 0;
+  padding: 5px;
+  width: calc(100%-40px);
+}
+.shifted {
+margin: 0;
+padding-bottom: 65px;
+.shifted2 {
+margin: 0;
+padding-bottom: 30px;    
+}
+
+}
+.control_label_green{
+  margin: 3;
+  padding: 20px;
+  padding-bottom: 3px;
+  margin-bottom: 0px;
+  color: #3e9970;
+  width: calc(100%-40px);
+}
+.control_label {
+  margin: 3;
+  padding: 20px;
+  padding-bottom: 3px;
+  margin-bottom: 0px;
+  color: #e8f0fc;
+  width: calc(100%-40px);
+}
+
+.rc-slider {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.container-display {
+  display: flex;
+}
+
+#individual_graph,
+#aggregate_graph {
+  width: calc(100% - 30px);
+  position: absolute;
+}
+
+#count_graph {
+  position: absolute;
+  height: calc(100% - 30px);
+  width: calc(100% - 30px);
+}
+
+#countGraphContainer {
+  flex: 5;
+  position: relative;
+}
+
+#header {
+  align-items: center;
+}
+#headerr{
+  align-items: center;
+}
+#learn-more-button {
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+  text-transform: none;
+  font-size: 15px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+#title {
+  text-align: center;
+}
+#title2 {
+  text-align: left;
+}
+
+.mini_container {
+  border-radius: 5px;
+  background-color: #191a1a;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px #6b648f;
+}
+
+#right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+#wells {
+  flex: 1;
+}
+
+#gas {
+  flex: 1;
+}
+
+#aggregate_data {
+  align-items: center;
+}
+
+#oil {
+  flex: 1;
+}
+
+#water {
+  flex: 1;
+}
+
+#tripleContainer {
+  display: flex;
+  flex: 3;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#pie_graph > div > div > svg:nth-child(3) > g.infolayer > g.legend {
+  pointer-events: all;
+  transform: translate(30px, 349px);
+}
+
+
+/* bootstrap */
+progress {
+  vertical-align: baseline;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+.progress {
+  display: -ms-flexbox;
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  font-size: 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.progress-bar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #28a745;
+  transition: width 0.6s ease;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+
+.progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+
