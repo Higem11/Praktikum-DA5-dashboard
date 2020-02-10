@@ -472,7 +472,6 @@ def update_graph_live(n):
     # theme
     most_dif = df.groupby('most_difficult_theme')['gender'].count().reset_index()
     most_dif.columns = ['most_difficult_theme', 'count']
-    most_dif = most_dif.reindex([0,1,2,4,3])
     
     def add_break(cell):
         cell_list = cell.split()
@@ -484,7 +483,7 @@ def update_graph_live(n):
     
     x = most_dif['labels']
     y = most_dif['count']
-#     max_y = y.max() # max value to give it red color
+    max_y = y.max() # max value to give it red color
 #     bar_colors = ['crimson' if rate == max_y else 'lightslategray' for rate in y]
     pulls = [0.1 if rate == max_y else 0 for rate in y]
 
