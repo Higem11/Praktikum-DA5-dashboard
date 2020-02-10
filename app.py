@@ -378,13 +378,14 @@ def update_graph_live(n):
     prev_quality_rate_mean = round(df.iloc[:-2:,5].mean(), 2)
     new_quality_rate_mean = round(df.iloc[:,5].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, 
+			       delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Praktikum rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
@@ -414,13 +415,14 @@ def update_graph_live(n):
     prev_job_rate_mean = round(df.iloc[:-2:,6].mean(), 2)
     new_job_rate_mean = round(df.iloc[:,6].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, 
+			       delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Job rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
@@ -451,13 +453,14 @@ def update_graph_live(n):
     prev_review_rate_mean = round(df.iloc[:-2:,7].mean(), 2)
     new_review_rate_mean = round(df.iloc[:,7].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, 
+			       delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Review rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
