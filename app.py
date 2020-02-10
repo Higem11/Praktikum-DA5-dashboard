@@ -371,7 +371,7 @@ def update_graph_live(n):
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)), hoverinfo='skip',
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
@@ -407,13 +407,13 @@ def update_graph_live(n):
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)), hoverinfo='skip',
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
 		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
-                    title="Оценки пользователей / текущий средний рейтинг",
+                    title="Оценки пользователей / текущий средний рейтинг", 
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -444,12 +444,12 @@ def update_graph_live(n):
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)), hoverinfo='skip',
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False),
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
                       title="Оценки пользователей / текущий средний рейтинг",
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
@@ -488,12 +488,12 @@ def update_graph_live(n):
     # draw it
     fig = go.Figure()
     fig.add_trace(go.Pie(labels=most_dif['most_difficult_theme'], values=most_dif['count'], hole=0.35, pull=pulls,
-		  	 textinfo='percent+label', textposition='outside'))
-    fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
+		  	 textinfo='percent+label'))
+    fig.update_traces(textfont_size=16, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -563,7 +563,7 @@ def update_graph_live(n):
                                     pitch=0, zoom=2.3),
                         plot_bgcolor = colors['background'],
                         paper_bgcolor = colors['background'],
-			margin=dict(l=0, r=0, t=0, b=0), height=370)
+			margin=dict(l=0, r=0, t=0, b=0))
 
     fig = go.Figure(data=data, layout=layout)
 
