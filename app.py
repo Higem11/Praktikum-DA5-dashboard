@@ -19,6 +19,8 @@ import dash_core_components as dcc
 
 import dash_html_components as html
 
+import dash_bootstrap_components as dbc
+
 import plotly.graph_objs as go
 
 #--------------------/Библиотеки---------------------------------- 
@@ -106,7 +108,7 @@ app.layout = html.Div(
                             },
                         )
                     ], href="https://praktikum.yandex.ru", target="_blank",
-		    )],
+		    ), ],
                     className="one-third column",
                 ),
                 html.Div(
@@ -371,7 +373,7 @@ def update_graph_live(n):
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)), hoverinfo='skip',
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
@@ -489,7 +491,7 @@ def update_graph_live(n):
     fig = go.Figure()
     fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
 		  	 textinfo='percent+label'))
-    fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
+    fig.update_traces(textfont_size=16, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font=dict(color=colors['text']),
@@ -571,6 +573,8 @@ def update_graph_live(n):
 
 #----------------------/map_plot----------------------------------------
 
+
+
 #--------------------------------------------------------/layout-------------------------------------------------------   
 
  
@@ -583,4 +587,4 @@ def update_graph_live(n):
 # условная конструкция и запуск
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050) # or whatever you choose
+    app.run_server(debug=False, port=8050) # or whatever you choose
