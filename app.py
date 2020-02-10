@@ -17,7 +17,7 @@ from dash.dependencies import Input, Output
 
 import dash_core_components as dcc
 
-import dash_bootstrap_components as dbc
+# import dash_bootstrap_components as dbc
 
 import dash_html_components as html
 
@@ -136,11 +136,11 @@ app.layout = html.Div(
             style={"margin-bottom": "25px"},
         ),
         # progress bar
-	html.Div([
-		  html.H4('Progress bar'), html.Div([
-		  dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
-		  dbc.Progress(id="progress", color="success", style={"height": "30px"}, className='progress_bar')])
-		]),
+# 	html.Div([
+# 		  html.H4('Progress bar'), html.Div([
+# 		  dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
+# 		  dbc.Progress(id="progress", color="success", style={"height": "30px"}, className='progress_bar')])
+# 		]),
 	# metrics
         html.Div(
             [
