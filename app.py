@@ -17,7 +17,7 @@ from dash.dependencies import Input, Output
 
 import dash_core_components as dcc
 
-# import dash_bootstrap_components as dbc
+import dash_bootstrap_components as dbc
 
 import dash_html_components as html
 
@@ -491,7 +491,7 @@ def update_graph_live(n):
     fig = go.Figure()
     fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
 		  	 textinfo='percent+label'))
-    fig.update_traces(textfont_size=12, marker=dict(line=dict(color='#000000', width=1)))
+    fig.update_traces(textfont_size=11, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], 
@@ -575,13 +575,6 @@ def update_graph_live(n):
 #----------------------/map_plot----------------------------------------
 
 #--------------------------------------------------------/layout-------------------------------------------------------   
-
- 
-
-
- 
-
- 
 
 # условная конструкция и запуск
 
