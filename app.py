@@ -489,14 +489,15 @@ def update_graph_live(n):
 
     # draw it
     fig = go.Figure()
-    fig.add_trace(go.Pie(labels=x, values=y, hole=0.35, pull=pulls,
+    fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
 		  	 textinfo='percent+label'))
-    fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
+    fig.update_traces(textfont_size=12, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
-    fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
-		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
+    fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], 
+		      font=dict(color='#FFFFFF'),
+		      xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
+		      yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
     return fig
