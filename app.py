@@ -373,7 +373,7 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y', mode="lines+markers"))
     # indicator of change
     prev_quality_rate_mean = round(df.iloc[:-2:,5].mean(), 2)
     new_quality_rate_mean = round(df.iloc[:,5].mean(), 2)
@@ -385,7 +385,7 @@ def update_graph_live(n):
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
@@ -410,7 +410,7 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y', mode="lines+markers"))
     # indicator of change
     prev_job_rate_mean = round(df.iloc[:-2:,6].mean(), 2)
     new_job_rate_mean = round(df.iloc[:,6].mean(), 2)
@@ -422,7 +422,7 @@ def update_graph_live(n):
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
@@ -448,7 +448,7 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['review'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index, y=df['review'], marker_color = 'crimson', hoverinfo='y', mode="lines+markers"))
     # indicator of change
     prev_review_rate_mean = round(df.iloc[:-2:,7].mean(), 2)
     new_review_rate_mean = round(df.iloc[:,7].mean(), 2)
@@ -460,7 +460,7 @@ def update_graph_live(n):
     # mean_line
     #3
     fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)),
-                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines+markers"))
+                            line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
