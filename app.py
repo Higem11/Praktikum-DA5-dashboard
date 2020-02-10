@@ -31,10 +31,11 @@ def get_df():
     r = requests.get('https://docs.google.com/spreadsheets/d/1x85oldnFJr2SqHQhvhTVYj08T62FbIiwL9ub2QB9TZY/export?format=csv')
     data = r.content
     df = pd.read_csv(BytesIO(data), index_col=0).reset_index()
-    df.columns = ['timestamp','gender','age','city','most_difficult_theme','quality_rate','job_rate','review']
+    df.columns = ['timestamp','gender','age','city','most_difficult_theme','quality_rate','job_rate','review', 'cohort_number']
     df['timestamp']= pd.to_datetime(df['timestamp'], format='%d.%m.%Y %H:%M:%S')
     df['day'] = df['timestamp'].astype('datetime64[D]')
-    df['review'].fillna(df.review.mean(),inplace=True)
+    df['review'] = df['review'].fillna(df.review.mean())
+    df['cohort_number'] = df['cohort_number'].fillna(5)
     df = df.dropna().reset_index(drop=True)
     df['pr_rate']= df.quality_rate*df.job_rate*df.review
 
