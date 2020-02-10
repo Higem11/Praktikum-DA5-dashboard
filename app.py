@@ -138,8 +138,10 @@ app.layout = html.Div(
         # progress bar
 	html.Div([
 		  html.H6('Прогресс прохождения курса'), html.Div([
-		  dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
-		  dbc.Progress(id="progress", color="success", style={"height": "30px"}, className='progress_bar')])
+		  						dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
+		  						dbc.Progress(id="progress", color="success", style={"height": "30px"}, 
+									     className='progress_bar')
+		  						 ])
 		], 
 		id="headerr",
             	className="row flex-display"
