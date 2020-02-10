@@ -587,4 +587,4 @@ def update_graph_live(n):
 # условная конструкция и запуск
 
 if __name__ == '__main__':
-    app.run_server(debug=False, port=8050) # or whatever you choose
+    app.run_server(debug=True, port=8050) # or whatever you choose
