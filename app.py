@@ -408,22 +408,23 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y', mode='lines+markers'))
     # indicator of change
     prev_quality_rate_mean = round(df.iloc[:-2:,5].mean(), 2)
     new_quality_rate_mean = round(df.iloc[:,5].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Praktikum rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['quality_rate'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False),
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
                       title="Оценки пользователей / текущий средний рейтинг",
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
@@ -444,22 +445,23 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y', mode='lines+markers'))
     # indicator of change
     prev_job_rate_mean = round(df.iloc[:-2:,6].mean(), 2)
     new_job_rate_mean = round(df.iloc[:,6].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Job rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['job_rate'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
                     title="Оценки пользователей / текущий средний рейтинг",
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
@@ -481,22 +483,23 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['review'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['review'], marker_color = 'crimson', hoverinfo='y', mode='lines+markers'))
     # indicator of change
     prev_review_rate_mean = round(df.iloc[:-2:,7].mean(), 2)
     new_review_rate_mean = round(df.iloc[:,7].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Review rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['review'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False),
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
                       title="Оценки пользователей / текущий средний рейтинг",
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
@@ -642,5 +645,5 @@ def update_progress(n):
 # условная конструкция и запуск
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8054) # or whatever you choose
+    app.run_server(debug=False, port=8054) # or whatever you choose
 
