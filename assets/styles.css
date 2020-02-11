@@ -197,8 +197,9 @@ progress {
   font-weight: bold;
   background-color: #191a1a;
   border-radius: 0.25rem;
-  margin-left: 3px;
+  margin-left: 4px;
   margin-right: 15px;
+  display: flex;
 }
 
 .progress-bar {
