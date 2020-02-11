@@ -117,11 +117,11 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.H3(
-                                    "5th cohort",
+                                    "5 когорта",
                                     style={"margin-bottom": "0px"},
                                 ),
                                 html.H5(
-                                    "Data-analyst", style={"margin-top": "0px"}
+                                    "Курс \"Аналитик данных\"", style={"margin-top": "0px"}
                                 ),
                             ]
                         )
@@ -167,10 +167,25 @@ app.layout = html.Div(
                             className="control_label",
                         ),
                         html.H6(
-                            "• Построен на основе опроса учащихся",
+                            "• Построен на основе опроса учащихся 5ой когорты",
                             className="control_label",
                         ),
                         html.H1(
+                            "",
+                            className="shifted",
+                        
+                        ),
+			html.H1(
+                            "",
+                            className="shifted",
+                        
+                        ),
+			html.H1(
+                            "",
+                            className="shifted",
+                        
+                        ),
+			html.H1(
                             "",
                             className="shifted",
                         
@@ -179,24 +194,6 @@ app.layout = html.Div(
                             "• Обновляется автоматически",
                             className="control_label",
                         ),
-                        html.P(
-                            "• Опрос можно пройти здесь",
-                            className="control_label",
-                        ),
-                        html.H1(
-                            "",
-                            className="shifted2",
-                        
-                        ),
-                        html.Div(
-                    [
-                        html.A(
-                            html.Button("опрос", id="1learn-more-button"),
-                            href="https://docs.google.com/forms/d/e/1FAIpQLScwuHIxILazCP_K6_kM-R-aNdlVPblrM1_dddvNF_lrC8G6Eg/viewform", target="_blank",
-                        )
-                    ],
-                    id="1button",
-                ),
                         html.P(),
                         html.P(
                             "• От студентов для студентов"
@@ -376,23 +373,24 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['quality_rate'], marker_color = 'crimson', hoverinfo='y'))
     # indicator of change
     prev_quality_rate_mean = round(df.iloc[:-2:,5].mean(), 2)
     new_quality_rate_mean = round(df.iloc[:,5].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_quality_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_quality_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Praktikum rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['quality_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['quality_rate'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False),
-                      title="Оценки пользователей / текущий средний рейтинг",
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
+                      title="Оценки пользователей / текущий средний рейтинг", mode='lines+markers',
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -412,23 +410,24 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['job_rate'], marker_color = 'crimson', hoverinfo='y'))
     # indicator of change
     prev_job_rate_mean = round(df.iloc[:-2:,6].mean(), 2)
     new_job_rate_mean = round(df.iloc[:,6].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_job_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_job_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Job rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['job_rate'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['job_rate'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
-                    title="Оценки пользователей / текущий средний рейтинг",
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
+                    title="Оценки пользователей / текущий средний рейтинг", mode='lines+markers',
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -449,23 +448,24 @@ def update_graph_live(n):
     fig = go.Figure()
 
     #1
-    fig.add_trace(go.Scatter(x=df.index, y=df['review'], marker_color = 'crimson', hoverinfo='y'))
+    fig.add_trace(go.Scatter(x=df.index+1, y=df['review'], marker_color = 'crimson', hoverinfo='y'))
     # indicator of change
     prev_review_rate_mean = round(df.iloc[:-2:,7].mean(), 2)
     new_review_rate_mean = round(df.iloc[:,7].mean(), 2)
     #2
-    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
+    fig.add_trace(go.Indicator(mode = 'number+delta', value = new_review_rate_mean, hoverinfo='skip',
+			       delta = {"reference": prev_review_rate_mean, "valueformat": ".2f"},
                                title = {"text": "Review rate"}, domain = {'y': [0, 1], 'x': [0.0, 1.0]}))
 
     # mean_line
     #3
-    fig.add_trace(go.Scatter(x=list(df.index), y=([df['review'].mean()] * len(df.index)),
+    fig.add_trace(go.Scatter(x=list(df.index+1), y=([df['review'].mean()] * len(df.index)),
                             line=dict(color="#6b648f", dash="dash"), name = 'mean', mode="lines"))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False),
-                      title="Оценки пользователей / текущий средний рейтинг",
+		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
+                      title="Оценки пользователей / текущий средний рейтинг", mode='lines+markers',
 		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
@@ -503,11 +503,11 @@ def update_graph_live(n):
     fig = go.Figure()
     fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
 		  	 textinfo='percent+label'))
-    fig.update_traces(textfont_size=11, marker=dict(line=dict(color='#000000', width=1)))
+    fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], 
-		      font=dict(color='#FFFFFF'),
+		      font=dict(color='#FFFFFF'), autosize=True,
 		      xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
 		      yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
