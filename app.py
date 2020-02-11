@@ -207,6 +207,16 @@ app.layout = html.Div(
                             className="shifted",
                         
                         ),
+			html.H1(
+                            "",
+                            className="shifted",
+                        
+                        ),
+			html.H1(
+                            "",
+                            className="shifted",
+                        
+                        ),
                         html.P(
                             "• Обновляется автоматически",
                             className="control_label",
