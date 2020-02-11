@@ -149,11 +149,11 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.H3(
-                                    "5th cohort",
+                                    "5 когорта",
                                     style={"margin-bottom": "0px"},
                                 ),
                                 html.H5(
-                                    "Data-analyst", style={"margin-top": "0px"}
+                                    "курс \"Аналитик данных\"", style={"margin-top": "0px"}
                                 ),
                             ]
                         )
@@ -172,7 +172,7 @@ app.layout = html.Div(
 		  html.Div(html.Div(
 					[
 					dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
-					dbc.Progress(id="progress", color="success", style={"height": "30px"}, 
+					dbc.Progress(id="progress", style={"height": "30px"}, 
 					    	     className='progress_bar')
 					]
 				   )
@@ -199,7 +199,7 @@ app.layout = html.Div(
                             className="control_label",
                         ),
                         html.H6(
-                            "• Построен на основе опроса учащихся",
+                            "• Построен на основе опроса учащихся 5ой когорты",
                             className="control_label",
                         ),
                         html.H1(
@@ -211,24 +211,6 @@ app.layout = html.Div(
                             "• Обновляется автоматически",
                             className="control_label",
                         ),
-                        html.P(
-                            "• Опрос можно пройти здесь",
-                            className="control_label",
-                        ),
-                        html.H1(
-                            "",
-                            className="shifted2",
-                        
-                        ),
-                        html.Div(
-                    [
-                        html.A(
-                            html.Button("опрос", id="1learn-more-button"),
-                            href="https://docs.google.com/forms/d/e/1FAIpQLScwuHIxILazCP_K6_kM-R-aNdlVPblrM1_dddvNF_lrC8G6Eg/viewform", target="_blank",
-                        )
-                    ],
-                    id="1button",
-                ),
                         html.P(),
                         html.P(
                             "• От студентов для студентов"
