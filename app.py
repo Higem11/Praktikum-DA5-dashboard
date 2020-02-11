@@ -168,7 +168,7 @@ app.layout = html.Div(
             style={"margin-bottom": "25px"},
         ),
         # progress bar
-	html.Div([html.Div(html.H6('Прогресс прохождения курса'), style={"margin-left": "2px"}), 
+	html.Div([html.Div(html.H6('Прогресс прохождения курса'), style={"margin-left": "4px"}), 
 		  html.Div(html.Div(
 					[
 					dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
