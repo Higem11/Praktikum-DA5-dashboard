@@ -645,5 +645,5 @@ def update_progress(n):
 # условная конструкция и запуск
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8054) # or whatever you choose
+    app.run_server(debug=False, port=8054) # or whatever you choose
 
