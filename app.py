@@ -149,11 +149,11 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.H3(
-                                    "5th cohort",
+                                    "5 когорта",
                                     style={"margin-bottom": "0px"},
                                 ),
                                 html.H5(
-                                    "Data-analyst", style={"margin-top": "0px"}
+                                    "Курс \"Аналитик данных\"", style={"margin-top": "0px"}
                                 ),
                             ]
                         )
@@ -172,7 +172,7 @@ app.layout = html.Div(
 		  html.Div(html.Div(
 					[
 					dcc.Interval(id="progress-interval", n_intervals=0, interval=500),
-					dbc.Progress(id="progress", color="success", style={"height": "30px"}, 
+					dbc.Progress(id="progress", style={"height": "30px"}, 
 					    	     className='progress_bar')
 					]
 				   )
@@ -199,7 +199,7 @@ app.layout = html.Div(
                             className="control_label",
                         ),
                         html.H6(
-                            "• Построен на основе опроса учащихся",
+                            "• Построен на основе опроса учащихся 5ой погорты",
                             className="control_label",
                         ),
                         html.H1(
@@ -211,24 +211,6 @@ app.layout = html.Div(
                             "• Обновляется автоматически",
                             className="control_label",
                         ),
-                        html.P(
-                            "• Опрос можно пройти здесь",
-                            className="control_label",
-                        ),
-                        html.H1(
-                            "",
-                            className="shifted2",
-                        
-                        ),
-                        html.Div(
-                    [
-                        html.A(
-                            html.Button("опрос", id="1learn-more-button"),
-                            href="https://docs.google.com/forms/d/e/1FAIpQLScwuHIxILazCP_K6_kM-R-aNdlVPblrM1_dddvNF_lrC8G6Eg/viewform", target="_blank",
-                        )
-                    ],
-                    id="1button",
-                ),
                         html.P(),
                         html.P(
                             "• От студентов для студентов"
@@ -319,7 +301,7 @@ app.layout = html.Div(
         html.Div([
         dcc.Interval(
             id='interval-component',
-            interval=10*1000, # in milliseconds
+            interval=30*1000, # in milliseconds
             n_intervals=0
         ),
         dcc.Interval(
@@ -461,9 +443,9 @@ def update_graph_live(n):
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
-                    title="Оценки пользователей / текущий средний рейтинг",
-		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
+		      xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
+                      title="Оценки пользователей / текущий средний рейтинг",
+		      yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
     return fig
@@ -499,9 +481,9 @@ def update_graph_live(n):
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor = colors['background'], font=dict(color=colors['text']),
-		       xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
+		      xaxis=dict(gridcolor=colors['grid'], showgrid=False), autosize=True,
                       title="Оценки пользователей / текущий средний рейтинг",
-		       yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
+		      yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
 
     return fig
@@ -538,11 +520,11 @@ def update_graph_live(n):
     fig = go.Figure()
     fig.add_trace(go.Pie(labels=x, values=y, pull=pulls,
 		  	 textinfo='percent+label'))
-    fig.update_traces(textfont_size=11, marker=dict(line=dict(color='#000000', width=1)))
+    fig.update_traces(textfont_size=10, marker=dict(line=dict(color='#000000', width=1)))
 
     # config layout
     fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], 
-		      font=dict(color='#FFFFFF'),
+		      font=dict(color='#FFFFFF'), autosize=True,
 		      xaxis=dict(gridcolor=colors['grid'], showgrid=False), 
 		      yaxis=dict(gridcolor=colors['grid'], range=[0,10]), showlegend=False,
 		     )
@@ -645,5 +627,5 @@ def update_progress(n):
 # условная конструкция и запуск
 
 if __name__ == '__main__':
-    app.run_server(debug=False, port=8054) # or whatever you choose
+    app.run_server(debug=False, port=8050) # or whatever you choose
 
